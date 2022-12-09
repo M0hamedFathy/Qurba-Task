@@ -10,7 +10,8 @@ import { ProductsModule } from "./products/products.module";
 import { SharedModule } from "./shared/shared.module";
 import { NavComponent } from "./nav/nav.component";
 import { FooterComponent } from "./footer/footer.component";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { PaginationModule } from "./pagination/pagination.module";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavComponent, FooterComponent],
@@ -19,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     SharedModule,
     AuthModule,
+    PaginationModule,
     ProductsModule,
     HttpClientModule,
     FontAwesomeModule,
