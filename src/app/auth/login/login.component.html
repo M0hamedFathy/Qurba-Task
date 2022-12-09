@@ -1,1 +1,71 @@
-<p>login works!</p>
+<section class="login-section">
+  <div class="container">
+    <div class="row">
+      <div class="login-card">
+        <div class="company-logo">
+          <a href="logo"
+            ><div class="logo"><div class="logo-circle"></div></div>
+          </a>
+        </div>
+        <div class="login-main-text">
+          <p class="main-text">Log in to your account</p>
+          <p class="secondary-text regular">
+            Welcome back! Please enter your details.
+          </p>
+        </div>
+        <!-- Alert box -->
+        <app-alert *ngIf="showAlert" [color]="alertColor">{{
+          alertMsg
+        }}</app-alert>
+        <!-- Login Form -->
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+          <!-- username -->
+          <div class="input-box">
+            <label>Username</label>
+            <input
+              name="username"
+              #username="ngModel"
+              [(ngModel)]="credentials.username"
+              type="text"
+              class=""
+              placeholder="Enter Username"
+              required
+              minlength="3"
+            />
+            <p
+              *ngIf="username.errors && username.touched && username.dirty"
+              class="text-red"
+            >
+              Username is invalid
+            </p>
+          </div>
+          <!-- Password -->
+          <div class="input-box">
+            <label>Password</label>
+            <input
+              name="password"
+              #password="ngModel"
+              [(ngModel)]="credentials.password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <p
+              *ngIf="password.errors && password.touched && password.dirty"
+              class="text-red"
+            >
+              Password is incorrect
+            </p>
+          </div>
+          <button
+            class="btn"
+            type="submit"
+            [disabled]="loginForm.invalid || inSubmission"
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,17 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { InputComponent } from "./input/input.component";
+import { AlertComponent } from "./alert/alert.component";
 
 @NgModule({
-  declarations: [
-    NavComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [InputComponent, AlertComponent],
+  imports: [CommonModule],
+  exports: [InputComponent, AlertComponent],
 })
-export class SharedModule { }
+export class SharedModule {}
