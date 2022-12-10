@@ -1,0 +1,43 @@
+<div class="container">
+  <p class="category bold">{{ searchValue }}</p>
+  <p class="route regular">
+    Home / Products
+    <span class="bold" *ngIf="searchValue && searchValue !== 'Products'"
+      >/ {{ searchValue }}</span
+    >
+  </p>
+  <div class="grid-container">
+    <div class="filter-section grid-item">
+      <div class="filter-container">
+        <p class="bold">Products</p>
+        <div class="custom-check-box">
+          <label
+            class="check-box-container regular"
+            *ngFor="let category of categories"
+            (change)="getProductsOfCategory(category, $event)"
+            ><span #category>{{ category }}</span> (5)
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="products-list-container">
+      <app-alert *ngIf="showAlert" [color]="alertColor">{{
+        alertMsg
+      }}</app-alert>
+      <div class="flex-container">
+        <app-products-list [products]="products"></app-products-list>
+      </div>
+      <app-pagination
+        *ngIf="total > 9 || products.length > total"
+        class="d-flex justify-content-center"
+        [currentPage]="currentPage"
+        [limit]="limit"
+        [total]="total"
+        [skip]="skip"
+        (changePage)="changePage($event)"
+      ></app-pagination>
+    </div>
+  </div>
+</div>

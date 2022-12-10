@@ -9,11 +9,11 @@ import IUser from "../Models/user.model";
   providedIn: "root",
 })
 export class AuthService {
+  //  variables
   apiRoot: string = "https://dummyjson.com/auth/login";
   constructor(private http: HttpClient) {}
-  // public isAuthenticated$: Observable<boolean>;
-  // private redirect = false; // this variable to make sure if the page that we currently browsing doesn't need login AUTH so you wouldn't be redirected from it
-  // constructor(private router: Router, private route: ActivatedRoute) {}
+
+  // sign in with user and password
   signInWithUsernameAndPassword(
     username: string,
     password: string

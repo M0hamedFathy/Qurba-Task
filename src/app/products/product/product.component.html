@@ -1,40 +1,44 @@
 <div class="card-container">
-  <div class="discount bold">- 12.96%</div>
+  <div class="discount bold">{{ product.discountPercentage }}%</div>
   <div class="card-img">
-    <img
-      src="https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12_new-design_10132020_big.jpg.large.jpg"
-      alt="product"
-    />
+    <img [src]="product.thumbnail" [alt]="product.title" />
   </div>
   <div class="card-body">
-    <p class="product-title bold">iPhone 12</p>
+    <p class="product-title bold">{{ product.title | shorten : 20 }}</p>
     <p class="product-description regular">
-      An Apple mobile which is nothing like apple.
+      {{ product.description | shorten : 55 }}
     </p>
+
     <div class="product-price">
       <p class="old-price">
-        <span class="bold">549 </span><span class="regular">USD</span>
+        <span class="bold">{{ product.price }} </span
+        ><span class="regular">USD</span>
       </p>
       <p class="new-price">
-        <span class="bold">477 </span><span class="regular">USD</span>
+        <span class="bold">{{ discountedPrice }} </span
+        ><span class="regular">USD</span>
       </p>
     </div>
     <div class="brand">
-      <span class="regular">Brand: </span><span class="bold">Apple</span>
+      <span class="regular">Brand: </span
+      ><span class="bold">{{ product.brand }}</span>
     </div>
     <div class="category">
       <span class="regular">Category: </span
-      ><span class="bold">Smartphone</span>
+      ><span class="bold">{{ product.category }}</span>
     </div>
     <div class="availability">
-      <span class="regular"> In Stock: </span><span class="bold">94</span>
+      <span class="regular"> In Stock: </span
+      ><span class="bold">{{ product.stock }}</span>
     </div>
     <div class="rating">
       <div class="rating-box">
-        <span class="icon"><fa-icon [icon]="faStar"></fa-icon> 4.69 </span>
+        <span class="icon"
+          ><fa-icon [icon]="faStar"></fa-icon> {{ product.rating }}
+        </span>
       </div>
       <div class="rating-times regular">(11)</div>
     </div>
-    <button class="btn">Add to cart</button>
+    <button class="btn" (click)="addToCart()">Add to cart</button>
   </div>
 </div>

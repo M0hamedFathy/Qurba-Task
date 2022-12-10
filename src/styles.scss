@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -75,5 +76,18 @@ body {
       background: #3ce4e45d;
       cursor: default;
     }
+  }
+
+  .d-flex {
+    display: flex;
+  }
+  .justify-content-center {
+    justify-content: center;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .m-l {
+    margin-left: 10px;
   }
 }

@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import IUser from "src/app/Models/user.model";
-import { AuthService } from "src/app/services/auth.service";
+import IUser from "src/app/shared/Models/user.model";
+import { AuthService } from "src/app/shared/services/auth.service";
 
 @Component({
   selector: "app-login",
@@ -22,7 +23,7 @@ export class LoginComponent {
   inSubmission = false;
 
   //importing Auth service
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -45,6 +46,8 @@ export class LoginComponent {
           this.alertMsg = "Success! You are now logged in";
           this.alertColor = "green";
           this.inSubmission = true;
+          sessionStorage.setItem("token", token);
+          this.router.navigateByUrl("/home");
         }
       },
       (e) => {
@@ -55,6 +58,10 @@ export class LoginComponent {
         this.inSubmission = false;
         this.alertMsg = message;
         this.alertColor = "red";
+        this.credentials = {
+          username: "",
+          password: "",
+        };
       }
     );
   }

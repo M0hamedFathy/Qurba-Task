@@ -9,7 +9,5 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string = "";
   @Input() type!: string;
 
-  ngOnInit() {
-    console.log(this.placeholder);
-  }
+  ngOnInit() {}
 }

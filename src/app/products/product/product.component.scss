@@ -2,6 +2,7 @@
   border: 0.5px solid #42424262;
   border-radius: 8px;
   position: relative;
+
   .discount {
     padding: 3px;
     font-size: 12px;
@@ -15,11 +16,14 @@
     left: 12px;
   }
   .card-img {
-    height: 258px;
     display: flex;
     justify-content: center;
+
+    overflow: hidden;
     img {
-      height: 100%;
+      width: 282px;
+      height: 258px;
+      border-radius: 8px 8px 0 0;
     }
   }
   .card-body {
@@ -39,6 +43,7 @@
       max-width: 240px;
       margin-bottom: 24px;
     }
+
     .product-price {
       display: flex;
       margin-bottom: 21px;
