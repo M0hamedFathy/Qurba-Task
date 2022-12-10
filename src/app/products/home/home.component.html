@@ -6,7 +6,11 @@
       >/ {{ searchValue }}</span
     >
   </p>
-  <div class="grid-container">
+  <div *ngIf="!isLoaded" class="d-flex justify-content-center">
+    <span class="loader"></span>
+  </div>
+
+  <div *ngIf="isLoaded" class="grid-container">
     <div class="filter-section grid-item">
       <div class="filter-container">
         <p class="bold">Products</p>
@@ -23,9 +27,6 @@
       </div>
     </div>
     <div class="products-list-container">
-      <app-alert *ngIf="showAlert" [color]="alertColor">{{
-        alertMsg
-      }}</app-alert>
       <div class="flex-container">
         <app-products-list [products]="products"></app-products-list>
       </div>

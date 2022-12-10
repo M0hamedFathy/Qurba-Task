@@ -25,9 +25,7 @@ export class HomeComponent implements DoCheck {
   skip!: number;
   searchValue: string = "Products";
 
-  showAlert: boolean = false;
-  alertColor!: string;
-  alertMsg!: string;
+  isLoaded: boolean = false;
 
   // Functions that needs to be executed once the component is rendered
   constructor(private productService$: ProductsService) {
@@ -94,6 +92,7 @@ export class HomeComponent implements DoCheck {
       this.limit = limit;
       this.skip = skip;
       this.originalProducts = products;
+      this.isLoaded = true;
     });
   }
 

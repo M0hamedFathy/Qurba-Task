@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewChecked, Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import IProduct from "src/app/shared/Models/product.model";
@@ -8,7 +8,7 @@ import IProduct from "src/app/shared/Models/product.model";
   templateUrl: "./product.component.html",
   styleUrls: ["./product.component.scss"],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, AfterViewChecked {
   // font awesome icon
   faStar = faStar;
 
@@ -18,6 +18,9 @@ export class ProductComponent implements OnInit {
   //variables
   cartProducts: number = 0;
   discountedPrice: number = 0;
+  showAlert: boolean = false;
+  alertColor!: string;
+  alertMsg!: string;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -30,12 +33,22 @@ export class ProductComponent implements OnInit {
     this.discountedPrice = priceAfterDiscount;
   }
 
+  ngAfterViewChecked(): void {
+    this.showAlert = false;
+  }
+
   // add to cart logic for the number above the cart to increase
   addToCart() {
     if (sessionStorage.getItem("cartCounter")) {
       let counter = Number(sessionStorage.getItem("cartCounter"));
       counter++;
+      this.showAlert = true;
+      this.alertColor = "green";
+      this.alertMsg = "Product added to the cart";
       sessionStorage.setItem("cartCounter", String(counter));
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 1000);
     } else {
       sessionStorage.setItem("cartCounter", "1");
     }
